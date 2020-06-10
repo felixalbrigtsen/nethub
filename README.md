@@ -8,7 +8,7 @@ Example screenshots:
 ![Normal use](/screenshots/screenshot1.png?raw=true "Normal usage")
 
 
-![Edit mode with new module](/screenshots/screenshot1.png?raw=true "Edit mode with new module")
+![Edit mode with new module](/screenshots/screenshot2.png?raw=true "Edit mode with new module")
 
 # Use with Vue:
 
