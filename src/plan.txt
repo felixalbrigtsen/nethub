@@ -1,0 +1,48 @@
+Nethub; Tile-based browser front-page
+
+Features:
+- Customizable; Move/Enable/Disable modules
+
+Future features:
+- Different themes
+
+Standard modules:
+- Clock
+- Calculator
+- Stock graph
+- Notepad
+- Email/social network integration
+- Links
+- RSS reader
+- Weather
+- Search bar
+
+
+State structure:
+tiles is a state array of objects. Each object:
+{
+    tileElement: The actual jsx element,
+    width: number of grid columns,
+    height: number of grid rows,
+    settings: {dependant of module}
+}
+
+Footer content:
+- Clock
+- Title/Credit
+- Edit Layout-button
+    -Enables edit-bar on modules
+    -Enables footer-button for Add module
+    -Enables drag-n-drop for modules
+
+
+Next Todo:
+
+- Redesign footer
+- Make Bookmark/link page
+- Make RSS reader
+- Make preset buttons
+- Allow moving modules
+- Implement remaining modules
+
+Complete:
