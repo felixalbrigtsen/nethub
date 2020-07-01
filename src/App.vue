@@ -14,7 +14,7 @@
 
     <div v-if="this.tiles.length == 0" class="module emptyscreen">
       <h2>It seems like you don't have any tiles! </h2>
-      <h3>Click one of the preset buttons at the bottom to load a preset</h3>
+      <h3>Enable edit mode and click one of the preset buttons at the bottom to load a preset</h3>
       <button @click="addTile" class="emptyAddTile">Or click here to add a tile!</button>
     </div>
   </div>
@@ -22,6 +22,8 @@
   <div class="App-footer" id="App-footer">
     <button @click="editMode = !editMode">{{editMode ? "Lock" : "Edit"}} Layout</button>
     <button v-if="editMode" @click="addTile">Add new tile</button>
+    <button v-if="editMode" class="presetButton" @click="()=>{this.tiles = JSON.parse(this.presets[0])}">Simple preset</button>
+    <button v-if="editMode" class="presetButton" @click="()=>{this.tiles = JSON.parse(this.presets[1])}">Full preset</button>
   </div>
 
 </div>
@@ -51,7 +53,11 @@ export default {
     return {
       tiles: Array(0),
       modules: ["notepad","clock","calculator","weather"],
-      editMode: false
+      editMode: false,
+      presets: [
+        '[{"type":"clock","width":1,"height":1,"key":"a0e51840-bbd8-11ea-8735-9756325b1007","settings":{}},{"type":"notepad","width":1,"height":1,"key":"a5f6b3c0-bbd8-11ea-8735-9756325b1007","settings":{}},{"type":"calculator","width":1,"height":1,"key":"bc6cabf0-bbd8-11ea-8735-9756325b1007","settings":{}}]',
+        '[{"type":"clock","width":1,"height":1,"key":"123b4900-8fb1-11ea-8f93-4d0694a51454","settings":{}},{"type":"calculator","width":1,"height":1,"key":"fa7dbe30-8fc7-11ea-9b3e-c3cb5896e76c","settings":{}},{"type":"weather","width":"2","height":1,"key":"fdea5c40-8fc7-11ea-9b3e-c3cb5896e76c","settings":{"location":"Oslo"}},{"type":"notepad","width":1,"height":"2","key":"126d5e10-8fc8-11ea-9b3e-c3cb5896e76c","settings":{"text":"Tall notepad"}},{"type":"notepad","width":"2","height":1,"key":"3b1a4530-8fc8-11ea-9b3e-c3cb5896e76c","settings":{"text":"Wide notepad"}}]'
+      ]
     }
   },
   methods: {
@@ -65,6 +71,9 @@ export default {
     },
     removeTile(key) {
       this.tiles = this.tiles.filter(tile=>tile.key!=key)
+    },
+    loadPreset(i) {
+      this.tiles = JSON.parse(this.presets[i]);
     }
   },
   watch: {
@@ -108,6 +117,12 @@ html, body, #app {
 .App-footer > button {
   height: 100%;
   margin-left: 10px;
+}
+
+.presetButton {
+  margin-right: 10px;
+  margin-left: 0;
+  float: right;
 }
 
 .App-grid {
