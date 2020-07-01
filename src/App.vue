@@ -71,9 +71,6 @@ export default {
     },
     removeTile(key) {
       this.tiles = this.tiles.filter(tile=>tile.key!=key)
-    },
-    loadPreset(i) {
-      this.tiles = JSON.parse(this.presets[i]);
     }
   },
   watch: {
